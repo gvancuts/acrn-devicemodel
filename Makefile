@@ -39,6 +39,10 @@ endif
 endif
 endif
 
+ifeq (true, $(shell [ $(GCC_MAJOR) -le 4 ] && echo true))
+CFLAGS += -fno-strict-aliasing -Wno-maybe-uninitialized
+endif
+
 LDFLAGS += -Wl,-z,noexecstack
 LDFLAGS += -Wl,-z,relro,-z,now
 
